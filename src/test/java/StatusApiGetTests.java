@@ -29,7 +29,8 @@ public class StatusApiGetTests {
                 .body("support.url", is (urlSupport))
                 .body("support.text", is (textSupport))
 
-                .statusCode(200);
+                .statusCode(200)
+                .extract().response();
 
     }
     @Test
@@ -41,7 +42,8 @@ public class StatusApiGetTests {
                 .log().body()
                 .body(equalTo("{}"))
 
-                .statusCode(404);
+                .statusCode(404)
+                .extract().response();
 
     }
 }
