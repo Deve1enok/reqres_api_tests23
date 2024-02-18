@@ -1,6 +1,8 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Story;
+import io.qameta.allure.selenide.AllureSelenide;
 import models.CreateUserRequestModel;
 import models.CreateUserResponseModel;
 import models.RegistrationRequestUser;
@@ -25,6 +27,7 @@ public class RegApiTests extends BaseTest {
     @Tag("positive")
     @DisplayName("Успешная регистрация пользователя")
     void successfulCreateUserTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         createData.setName("morpheus");
         createData.setJob("leader");
@@ -53,6 +56,7 @@ public class RegApiTests extends BaseTest {
     @Tag("negative")
     @DisplayName("Регистрация без заполнения \"job\"")
     void unsuccessfulCreateUserTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         createData.setName("morpheus");
 
@@ -78,6 +82,7 @@ public class RegApiTests extends BaseTest {
     @Tag("positive")
     @DisplayName("Изменение имени и место работы пользователя")
     void successfulUpdateUserDataTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         createData.setName("NEO");
         createData.setJob("developer");
@@ -103,6 +108,7 @@ public class RegApiTests extends BaseTest {
     @Tag("negative")
     @DisplayName("Регистрация без \"password\"")
     void unsuccessfulLoginUserTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         loginData.setEmail("peter@klaven");
 

@@ -1,6 +1,8 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Story;
+import io.qameta.allure.selenide.AllureSelenide;
 import models.UserResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -20,6 +22,7 @@ public class StatusApiGetTests extends BaseTest {
     @Tag("positive")
     @DisplayName("Проверка на существующего пользователя с id=2 и его данными")
     void checkSingleUserId2(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
             UserResponseModel response = step("Отправляем GET запрос", () ->
                     given(userRequestSpecification)
@@ -45,6 +48,7 @@ public class StatusApiGetTests extends BaseTest {
     @Tag("negative")
     @DisplayName("Проверка на несуществующего пользователя")
     void checkSingleUserNotFound(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         UserResponseModel response = step("Отправляем GET запрос", () ->
                 given(userRequestSpecification)
