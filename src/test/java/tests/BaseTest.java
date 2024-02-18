@@ -16,8 +16,7 @@ import java.util.Map;
 public class BaseTest {
     @BeforeAll
     static void setUp() {
-//        RestAssured.baseURI = "https://reqres.in";
-//        RestAssured.basePath = "/api";
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://reqres.in");
         Configuration.remote = System.getProperty("selenoid", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
