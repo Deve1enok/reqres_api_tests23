@@ -4,6 +4,8 @@ plugins {
     id 'io.freefair.lombok' version '6.0.0-m2'
 
 }
+group 'org.example'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -35,11 +37,13 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'io.qameta.allure:allure-selenide:2.19.0',
-            'org.slf4j:slf4j-simple:2.0.7'
+            'org.slf4j:slf4j-simple:2.0.7',
+            "com.codeborne:selenide:6.19.1",
     )
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
@@ -49,3 +53,18 @@ tasks.withType(Test) {
         }
     }
 }
+    task test_suite(type: Test) {
+        useJUnitPlatform {
+            includeTags("all_test")
+        }
+    }
+    task positive_tests(type: Test) {
+        useJUnitPlatform {
+            includeTags("positive_test")
+        }
+    }
+    task negative_tests(type: Test) {
+        useJUnitPlatform {
+            includeTags("negative_test")
+        }
+    }
