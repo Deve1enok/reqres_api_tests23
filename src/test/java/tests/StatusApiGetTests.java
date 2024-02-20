@@ -28,7 +28,7 @@ public class StatusApiGetTests extends BaseTest {
     @Story("Позитивные тесты")
     @DisplayName("Проверка на существующего пользователя с id=2 и его данными")
     void checkSingleUserId2(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
 
             UserResponseModel response = step("Отправляем GET запрос", () ->
                     given(userRequestSpecification)

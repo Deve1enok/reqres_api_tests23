@@ -14,7 +14,6 @@ import static io.restassured.http.ContentType.JSON;
 public class UserSpec {
     public static RequestSpecification userRequestSpecification = with()
             .filter(withCustomTemplates())
-            .filter(new AllureRestAssured())
             .contentType(JSON)
             .log().uri()
             .log().body()
