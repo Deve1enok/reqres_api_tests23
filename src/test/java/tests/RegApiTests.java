@@ -1,6 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
 import models.CreateUserRequestModel;
@@ -18,13 +21,16 @@ import static specs.RegistrationSpec.*;
 import static specs.UserSpec.userSuccessResponseSpecification;
 
 @Tag("all_test")
+@Epic("rest API")
 public class RegApiTests extends BaseTest {
     CreateUserRequestModel createData = new CreateUserRequestModel();
     RegistrationRequestUser loginData = new RegistrationRequestUser();
 
     @Test
-    @Story("Позитивные тесты")
     @Tag("positive_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("POST запросы")
+    @Story("Позитивные тесты")
     @DisplayName("Успешная регистрация пользователя")
     void successfulCreateUserTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -52,8 +58,10 @@ public class RegApiTests extends BaseTest {
 
     }
     @Test
-    @Story("Негативные тесты")
     @Tag("negative_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("POST запросы")
+    @Story("Негативные тесты")
     @DisplayName("Регистрация без заполнения \"job\"")
     void unsuccessfulCreateUserTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -78,8 +86,10 @@ public class RegApiTests extends BaseTest {
         });
     }
     @Test
-    @Story("Позитивные тесты")
     @Tag("positive_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("PUT запросы")
+    @Story("Позитивные тесты")
     @DisplayName("Изменение имени и место работы пользователя")
     void successfulUpdateUserDataTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -104,8 +114,10 @@ public class RegApiTests extends BaseTest {
         });
     }
     @Test
-    @Story("Негативные тесты")
     @Tag("negative_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("POST запросы")
+    @Story("Негативные тесты")
     @DisplayName("Регистрация без \"password\"")
     void unsuccessfulLoginUserTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());

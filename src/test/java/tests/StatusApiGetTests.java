@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
 import models.UserResponseModel;
@@ -18,8 +20,10 @@ import static specs.UserSpec.*;
 public class StatusApiGetTests extends BaseTest {
 
     @Test
-    @Story("Позитивные тесты")
     @Tag("positive_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("GET запросы")
+    @Story("Позитивные тесты")
     @DisplayName("Проверка на существующего пользователя с id=2 и его данными")
     void checkSingleUserId2(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -44,8 +48,10 @@ public class StatusApiGetTests extends BaseTest {
             });
         }
     @Test
-    @Story("Негативные тесты")
     @Tag("negative_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("GET запросы")
+    @Story("Негативные тесты")
     @DisplayName("Проверка на несуществующего пользователя")
     void checkSingleUserNotFound(){
         SelenideLogger.addListener("allure", new AllureSelenide());
