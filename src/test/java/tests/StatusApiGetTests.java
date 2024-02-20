@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static specs.UserSpec.*;
 
 @Tag("all_test")
+@Epic("Rest API tests")
 public class StatusApiGetTests extends BaseTest {
 
     @Test

@@ -21,7 +21,7 @@ import static specs.RegistrationSpec.*;
 import static specs.UserSpec.userSuccessResponseSpecification;
 
 @Tag("all_test")
-@Epic("rest API")
+@Epic("Rest API tests")
 public class RegApiTests extends BaseTest {
     CreateUserRequestModel createData = new CreateUserRequestModel();
     RegistrationRequestUser loginData = new RegistrationRequestUser();
