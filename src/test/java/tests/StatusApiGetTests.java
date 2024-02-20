@@ -14,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static specs.UserSpec.*;
 
-
+@Tag("all_test")
 public class StatusApiGetTests extends BaseTest {
 
     @Test
     @Story("Позитивные тесты")
-    @Tag("positive")
+    @Tag("positive_test")
     @DisplayName("Проверка на существующего пользователя с id=2 и его данными")
     void checkSingleUserId2(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -45,7 +45,7 @@ public class StatusApiGetTests extends BaseTest {
         }
     @Test
     @Story("Негативные тесты")
-    @Tag("negative")
+    @Tag("negative_test")
     @DisplayName("Проверка на несуществующего пользователя")
     void checkSingleUserNotFound(){
         SelenideLogger.addListener("allure", new AllureSelenide());

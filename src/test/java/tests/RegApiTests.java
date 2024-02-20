@@ -17,14 +17,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static specs.RegistrationSpec.*;
 import static specs.UserSpec.userSuccessResponseSpecification;
 
-
+@Tag("all_test")
 public class RegApiTests extends BaseTest {
     CreateUserRequestModel createData = new CreateUserRequestModel();
     RegistrationRequestUser loginData = new RegistrationRequestUser();
 
     @Test
     @Story("Позитивные тесты")
-    @Tag("positive")
+    @Tag("positive_test")
     @DisplayName("Успешная регистрация пользователя")
     void successfulCreateUserTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -53,7 +53,7 @@ public class RegApiTests extends BaseTest {
     }
     @Test
     @Story("Негативные тесты")
-    @Tag("negative")
+    @Tag("negative_test")
     @DisplayName("Регистрация без заполнения \"job\"")
     void unsuccessfulCreateUserTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -79,7 +79,7 @@ public class RegApiTests extends BaseTest {
     }
     @Test
     @Story("Позитивные тесты")
-    @Tag("positive")
+    @Tag("positive_test")
     @DisplayName("Изменение имени и место работы пользователя")
     void successfulUpdateUserDataTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -105,7 +105,7 @@ public class RegApiTests extends BaseTest {
     }
     @Test
     @Story("Негативные тесты")
-    @Tag("negative")
+    @Tag("negative_test")
     @DisplayName("Регистрация без \"password\"")
     void unsuccessfulLoginUserTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
