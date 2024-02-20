@@ -38,7 +38,7 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'io.qameta.allure:allure-selenide:2.19.0',
             'org.slf4j:slf4j-simple:2.0.7',
-            "com.codeborne:selenide:6.19.1",
+            "com.codeborne:selenide:6.19.1"
     )
 }
 
@@ -53,18 +53,18 @@ tasks.withType(Test) {
         }
     }
 }
-    task test_suite(type: Test) {
-        useJUnitPlatform {
-            includeTags("all_test")
-        }
+task test_suite(type: Test) {
+    useJUnitPlatform {
+        includeTags("all_test")
     }
-    task positive_tests(type: Test) {
-        useJUnitPlatform {
-            includeTags("positive_test")
-        }
+}
+task positive_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("positive_test")
     }
-    task negative_tests(type: Test) {
-        useJUnitPlatform {
-            includeTags("negative_test")
-        }
+}
+task negative_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("negative_test")
     }
+}
