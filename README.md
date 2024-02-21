@@ -89,9 +89,9 @@ ____
 </p>  
 
 ## *Подробный отчёт одного из тест-кейсов*
-### **На вкладке <code>Behaviors</code> можно рассмотреть каждый тест-кейс и его шаги воспроизведения, файлы(скриншоты,видео,код и т.п.).**
+### **На вкладке <code>Behaviors</code> можно рассмотреть каждый тест-кейс. Также можно подробно посмотреть тело запроса, ответа на отдельной html-странице.**
 <p align="center">  
-<img title="Allure Overview Dashboard" src="media/screenshots/allureReportsTK.jpg">  
+<img title="Allure Overview Dashboard" src="media/screenshots/allureReportTK.jpg">  
 </p>
 
 ____
@@ -99,12 +99,12 @@ ____
 
 <a id="allureTestOps"></a>
 ## <img alt="AllureTestOps" src="media/logo/Allure_TO.svg" height= "25" width="25" /><a name="Интеграция AllureTO"></a>Интеграция с [AllureTestOps](https://allure.autotests.cloud/project/4047/dashboards)</a>
-### **На `Dashboard` в `Allure TestOps` видна статистика тестирования: количество тест-кейсов, количество ручных/автоматизированных тестов, количество запусков тест-кейсов.**
+### **На `Dashboard` в `Allure TestOps` видна статистика тестирования: количество тест-кейсов, автоматизированных тестов, количество запусков тест-кейсов.**
 <p align="center">  
 <img title="AllureTestOps Dashboard" src="media/screenshots/allureTestOpsDashBoard.jpg">
 </p>
 
-Во вкладке <code>Test-cases</code> представлены все существующие тест-кейсы с подробным описанием, шагами воспроизведения, тегами, историей.
+Во вкладке <code>Test-cases</code> представлены все существующие тест-кейсы с подробным описанием(телом запроса, ответа, тегами, историей).
 
 <p align="center">   
 <img title="AllureTestOpsTS" src="media/screenshots/allureTestOpsTestSuite.jpg" alt="AllureTestOpsTs">
