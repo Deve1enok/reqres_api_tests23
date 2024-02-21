@@ -45,7 +45,7 @@ ____
   
 ***GET-запросы:***
 -  *Проверка на существующего пользователя с id=2 и его данными*
--  *Проверка неизвестного существующего пользователя с id=2 и его данными *
+-  *Проверка неизвестного существующего пользователя с id=2 и его данными*
 -  *Проверка на несуществующего пользователя*
 
 ***PUT-запросы:***
@@ -65,7 +65,7 @@ gradle clean negative_tests
 ```
 ____
 <a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="media/logo/jenkins-original.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/portfolio_example_habr_career_jenkins_test/)</a>
+## <img alt="Jenkins" height="25" src="media/logo/jenkins-original.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/portfolio_reqres_api_test_23/)</a>
 ### **Для запуска сборки необходимо перейти в раздел `Build with Parameters` выбрать нужные вам параметры и нажать кнопку `Build`.**
 <p align="center">  
 <img title="Jenkins" src="media/screenshots/jenkinsBuild.jpg" alt="Jenkins"/>
@@ -80,7 +80,7 @@ ____
 ____
 
 <a id="allure"></a>
-## <img src="media/logo/Allure.svg" height= "25" width="25"  alt="Allure"/> Allure <a target="_blank" href="https://jenkins.autotests.cloud/job/portfolio_example_habr_career_jenkins_test/allure/">отчёт</a>
+## <img src="media/logo/Allure.svg" height= "25" width="25"  alt="Allure"/> Allure <a target="_blank" href="https://jenkins.autotests.cloud/job/portfolio_reqres_api_test_23/12/allure/">отчёт</a>
 
 ## *Основная страница отчёта*
 
@@ -98,7 +98,7 @@ ____
 
 
 <a id="allureTestOps"></a>
-## <img alt="AllureTestOps" src="media/logo/Allure_TO.svg" height= "25" width="25" /><a name="Интеграция AllureTO"></a>Интеграция с [AllureTestOps](https://allure.autotests.cloud/project/3884/dashboards)</a>
+## <img alt="AllureTestOps" src="media/logo/Allure_TO.svg" height= "25" width="25" /><a name="Интеграция AllureTO"></a>Интеграция с [AllureTestOps](https://allure.autotests.cloud/project/4047/dashboards)</a>
 ### **На `Dashboard` в `Allure TestOps` видна статистика тестирования: количество тест-кейсов, количество ручных/автоматизированных тестов, количество запусков тест-кейсов.**
 <p align="center">  
 <img title="AllureTestOps Dashboard" src="media/screenshots/allureTestOpsDashBoard.jpg">
@@ -121,7 +121,7 @@ ____
 
 
 <a id="jira"></a>
-## <img alt="jiraTask" src="media/logo/Jira.svg" height= "25" width="25"/><a name="Интеграция Jira"></a>Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-1010)</a>
+## <img alt="jiraTask" src="media/logo/Jira.svg" height= "25" width="25"/><a name="Интеграция Jira"></a>Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-1112)</a>
 ### **Реализована интеграция `Allure TestOps` с `Jira`, в тикете отображается, какие тест-кейсы были написаны в рамках задачи и результат их прогона.**
 <p align="center">  
 <img title="Jira Tasks" src="media/screenshots/jiraTask.jpg">
@@ -135,14 +135,4 @@ ____
 
 <p align="center">
 <img title="Telegram Notifications" src="media/screenshots/telegramBotInfo.jpg">
-</p>
-
-
-____
-
-<a id="selenoid"></a>
-## <img title="Selenoid" width="25" height="25" src="media/logo/Selenoid.svg"> Видео примера запуска тестов в Selenoid.
-### **В отчетах <code>Allure</code> для каждого теста прикреплен не только скриншот, но и видео прохождения теста.**
-<p align="center">
-<img title="Selenoid Video" src="media/screenshots/videoTestHabr.gif">
 </p>
