@@ -28,8 +28,8 @@ ____
 <a href="https://www.jenkins.io/"><img height= "40" width="40" title="Jenkins" src="media/logo/jenkins-original.svg"></a>
 <a href="https://web.telegram.org/a/"><img height= "40" width="40" title="Telegram" src="media/logo/Telegram.svg"></a>
 <a href="https://www.atlassian.com/ru/software/jira/"><img height= "40" width="40" title="Jira" src="media/logo/Jira.svg"></a>
-<a href="https://www.atlassian.com/ru/software/jira/"><img height= "40" width="40" title="Jira" src="media/logo/JUnit5.svg"></a>
-<a href="https://www.atlassian.com/ru/software/jira/"><img height= "40" width="40" title="Jira" src="media/logo/Idea.svg"></a>
+<a href="https://junit.org/junit5/"><img height= "40" width="40" title="JUni5" src="media/logo/JUnit5.svg"></a>
+<a href="https://www.jetbrains.com/ru-ru/idea/"><img height= "40" width="40" title="IDEA" src="media/logo/Idea.svg"></a>
 
 </p>
 
