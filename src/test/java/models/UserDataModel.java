@@ -9,4 +9,8 @@ public class UserDataModel {
     private String first_name;
     private String last_name;
     private String avatar;
+    private String name;
+    private String year;
+    private String color;
+    private String pantone_value;
 }

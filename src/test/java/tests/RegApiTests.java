@@ -1,18 +1,14 @@
 package tests;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
-import io.qameta.allure.selenide.AllureSelenide;
-import models.CreateUserRequestModel;
-import models.CreateUserResponseModel;
-import models.RegistrationRequestUser;
-import models.RegistrationResponseModel;
+import models.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import utils.*;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -24,7 +20,13 @@ import static specs.UserSpec.userSuccessResponseSpecification;
 @Epic("Rest API tests")
 public class RegApiTests extends BaseTest {
     CreateUserRequestModel createData = new CreateUserRequestModel();
-    RegistrationRequestUser loginData = new RegistrationRequestUser();
+    RegistrationAndLoginRequestUser loginData = new RegistrationAndLoginRequestUser();
+    DataPostCreateUser dataCreateUser = new DataPostCreateUser();
+    DataPutUpdateUser dataUpdateUser = new DataPutUpdateUser();
+    DataRegistrationPeterUser dataUserPeter = new DataRegistrationPeterUser();
+    DataMissingPasswordUser dataMissPassword = new DataMissingPasswordUser();
+    DataLoginEveUser dataUserEve = new DataLoginEveUser();
+
 
     @Test
     @Tag("positive_test")
@@ -33,54 +35,50 @@ public class RegApiTests extends BaseTest {
     @Story("Позитивные тесты")
     @DisplayName("Успешная регистрация пользователя")
     void successfulCreateUserTest(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
-        createData.setName("morpheus");
-        createData.setJob("leader");
+        createData.setName(dataCreateUser.getName());
+        createData.setJob(dataCreateUser.getJob());
 
         CreateUserResponseModel response = step("Отправляем POST запрос", ()->
                 given(createRequestSpec)
                         .body(createData)
                         .when()
-                        .post("users")
+                        .post("/users")
 
                         .then()
                         .spec(createResponseSpec)
                         .extract().as(CreateUserResponseModel.class));
 
         step("Проверяем тело-ответа", ()->{
-            assertEquals("morpheus", response.getName());
-            assertEquals("leader", response.getJob());
+            assertEquals(dataCreateUser.getName(), response.getName());
+            assertEquals(dataCreateUser.getJob(), response.getJob());
             assertNotNull(response.getId());
             assertNotNull(response.getCreatedAt());
         });
-
-
     }
     @Test
-    @Tag("negative_test")
+    @Tag("positive_test")
     @Owner("Fazlyakhemtov D.A.")
     @Feature("POST запросы")
-    @Story("Негативные тесты")
+    @Story("Позитивные тесты")
     @DisplayName("Регистрация без заполнения \"job\"")
-    void unsuccessfulCreateUserTest(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void successfulCreateUserWithoutDataJobTest(){
 
-        createData.setName("morpheus");
+        createData.setName(dataCreateUser.getName());
 
         CreateUserResponseModel response = step("Отправляем POST запрос", ()->
                 given(createRequestSpec)
                         .body(createData)
                         .when()
-                        .post("users")
+                        .post("/users")
 
                         .then()
                         .spec(createResponseSpec)
                         .extract().as(CreateUserResponseModel.class));
 
         step("Проверяем тело-ответа", ()->{
-            assertEquals("morpheus", response.getName());
-            assertNotEquals("",response.getJob());
+            assertEquals(dataCreateUser.getName(), response.getName());
+            assertNull(response.getJob());
             assertNotNull(response.getId());
             assertNotNull(response.getCreatedAt());
         });
@@ -92,24 +90,23 @@ public class RegApiTests extends BaseTest {
     @Story("Позитивные тесты")
     @DisplayName("Изменение имени и место работы пользователя")
     void successfulUpdateUserDataTest(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
-        createData.setName("NEO");
-        createData.setJob("developer");
+        createData.setName(dataUpdateUser.getName());
+        createData.setJob(dataUpdateUser.getJob());
 
         CreateUserResponseModel response = step("Отправляем PUT запрос", ()->
                 given(createRequestSpec)
                         .body(createData)
                         .when()
-                        .put("users/2")
+                        .put("/users/2")
 
                         .then()
                         .spec(userSuccessResponseSpecification)
                         .extract().as(CreateUserResponseModel.class));
 
         step("Проверяем тело-ответа", ()->{
-            assertEquals("NEO", response.getName());
-            assertEquals("developer", response.getJob());
+            assertEquals(dataUpdateUser.getName(), response.getName());
+            assertEquals(dataUpdateUser.getJob(), response.getJob());
             assertNotNull(response.getUpdatedAt());
         });
     }
@@ -119,12 +116,11 @@ public class RegApiTests extends BaseTest {
     @Feature("POST запросы")
     @Story("Негативные тесты")
     @DisplayName("Регистрация без \"password\"")
-    void unsuccessfulLoginUserTest(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void unsuccessfulRegistrationUserWithoutPasswordTest(){
 
-        loginData.setEmail("peter@klaven");
+        loginData.setEmail(dataUserPeter.getEmail());
 
-        RegistrationResponseModel response = step("Отправляем POST запрос", ()->
+        RegistrationAndLoginResponseModel response = step("Отправляем POST запрос", ()->
                 given(createRequestSpec)
                         .body(loginData)
                         .when()
@@ -132,12 +128,61 @@ public class RegApiTests extends BaseTest {
 
                         .then()
                         .spec(errorResponseSpec)
-                        .extract().as(RegistrationResponseModel.class));
+                        .extract().as(RegistrationAndLoginResponseModel.class));
 
         step("Проверяем тело-ответа", ()->{
-            assertEquals("Missing password", response.getError());
+            assertEquals(dataMissPassword.getErrorPassword(), response.getError());
 
         });
+    }
+    @Test
+    @Tag("positive_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("POST запросы")
+    @Story("Позитивные тесты")
+    @DisplayName("Успешная авторизация пользователя")
+    void successfulLoginUserTest(){
 
+        loginData.setEmail(dataUserEve.getEmail());
+        loginData.setPassword(dataUserEve.getPassword());
+
+        CreateUserResponseModel response = step("Отправляем POST запрос", ()->
+                given(createRequestSpec)
+                        .body(loginData)
+                        .when()
+                        .post("/login")
+
+                        .then()
+                        .spec(createLoginResponseSpec)
+                        .extract().as(CreateUserResponseModel.class));
+
+        step("Проверяем тело-ответа", ()->{
+            assertNotNull(response.getToken());
+        });
+    }
+    @Test
+    @Tag("negative_test")
+    @Owner("Fazlyakhemtov D.A.")
+    @Feature("POST запросы")
+    @Story("Негативные тесты")
+    @DisplayName("Авторизация без \"password\"")
+    void unsuccessfulLoginUserWithoutPasswordTest(){
+
+        loginData.setEmail(dataUserPeter.getEmail());
+
+        RegistrationAndLoginResponseModel response = step("Отправляем POST запрос", ()->
+                given(createRequestSpec)
+                        .body(loginData)
+                        .when()
+                        .post("/login")
+
+                        .then()
+                        .spec(errorResponseSpec)
+                        .extract().as(RegistrationAndLoginResponseModel.class));
+
+        step("Проверяем тело-ответа", ()->{
+            assertEquals(dataMissPassword.getErrorPassword(), response.getError());
+
+        });
     }
 }

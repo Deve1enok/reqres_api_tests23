@@ -30,4 +30,9 @@ public class RegistrationSpec {
             .log(STATUS)
             .log(BODY)
             .build();
+    public static ResponseSpecification createLoginResponseSpec = new ResponseSpecBuilder()
+            .expectStatusCode(200)
+            .log(STATUS)
+            .log(BODY)
+            .build();
 }

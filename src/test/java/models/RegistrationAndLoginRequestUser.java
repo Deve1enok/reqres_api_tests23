@@ -3,6 +3,6 @@ package models;
 import lombok.Data;
 
 @Data
-public class RegistrationRequestUser {
+public class RegistrationAndLoginRequestUser {
     String email, password;
 }

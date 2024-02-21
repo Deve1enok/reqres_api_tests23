@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class CreateUserResponseModel {
-    String name , job , id ,createdAt, updatedAt;
+    String name , job , id ,createdAt, updatedAt, token;
 }
