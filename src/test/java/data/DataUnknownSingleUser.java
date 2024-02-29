@@ -1,4 +1,4 @@
-package utils;
+package data;
 
 
 import lombok.Data;
@@ -11,7 +11,7 @@ public class DataUnknownSingleUser {
     String color = "#C74375";
     String pantoneValue = "17-2031";
     String url = "https://reqres.in/#support-heading";
-    String text  = "To keep ReqRes free, contributions towards server costs are appreciated!";
+    String text = "To keep ReqRes free, contributions towards server costs are appreciated!";
 
 }
 

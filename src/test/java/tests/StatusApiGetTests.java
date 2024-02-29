@@ -1,5 +1,7 @@
 package tests;
 
+import data.DataSingleUserId2;
+import data.DataUnknownSingleUser;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
@@ -8,14 +10,11 @@ import models.UserResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import utils.DataSingleUserId2;
-import utils.DataUnknownSingleUser;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static specs.UserSpec.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static specs.UserSpecification.*;
 
 @Tag("all_test")
 @Epic("Rest API tests")
@@ -23,41 +22,40 @@ public class StatusApiGetTests extends BaseTest {
     DataUnknownSingleUser dataUnknownSingleUser = new DataUnknownSingleUser();
     DataSingleUserId2 dataSingleUserId2 = new DataSingleUserId2();
 
-
     @Test
     @Tag("positive_test")
     @Owner("Fazlyakhemtov D.A.")
     @Feature("GET запросы")
     @Story("Позитивные тесты")
     @DisplayName("Проверка на существующего пользователя с id=2 и его данными")
-    void checkSingleUserId2(){
+    void checkSingleUserId2() {
 
-            UserResponseModel response = step("Отправляем GET запрос", () ->
-                    given(userRequestSpecification)
+        UserResponseModel response = step("Отправляем GET запрос", () ->
+                given(userRequestSpecification)
 
-                            .when()
-                            .get("/users/2")
+                        .when()
+                        .get("/users/2")
 
-                            .then()
-                            .spec(userSuccessResponseSpecification)
-                            .extract().as(UserResponseModel.class));
+                        .then()
+                        .spec(userSuccessResponseSpec200)
+                        .extract().as(UserResponseModel.class));
 
+        step("Проверяем тело-ответа", () -> {
+            assertThat(dataSingleUserId2.getId()).isEqualTo(response.getData().getId());
+            assertThat(dataSingleUserId2.getEmail()).isEqualTo(response.getData().getEmail());
+            assertThat(dataSingleUserId2.getFirstName()).isEqualTo(response.getData().getFirstName());
+            assertThat(dataSingleUserId2.getLastName()).isEqualTo(response.getData().getLastName());
+            assertThat(dataSingleUserId2.getAvatar()).isEqualTo(response.getData().getAvatar());
+        });
+    }
 
-            step("Проверяем тело-ответа", () -> {
-                assertEquals(dataSingleUserId2.getId(), response.getData().getId());
-                assertEquals(dataSingleUserId2.getEmail(), response.getData().getEmail());
-                assertEquals(dataSingleUserId2.getFirst_name(), response.getData().getFirst_name());
-                assertEquals(dataSingleUserId2.getLast_name(), response.getData().getLast_name());
-                assertEquals(dataSingleUserId2.getAvatar(), response.getData().getAvatar());
-            });
-        }
     @Test
     @Tag("negative_test")
     @Owner("Fazlyakhemtov D.A.")
     @Feature("GET запросы")
     @Story("Негативные тесты")
     @DisplayName("Проверка на несуществующего пользователя")
-    void checkSingleUserNotFound(){
+    void checkSingleUserNotFound() {
 
         UserResponseModel response = step("Отправляем GET запрос", () ->
                 given(userRequestSpecification)
@@ -66,21 +64,22 @@ public class StatusApiGetTests extends BaseTest {
                         .get("/users/23")
 
                         .then()
-                        .spec(userNotFoundResponseSpecification)
+                        .spec(userNotFoundResponseSpec404)
                         .extract().as(UserResponseModel.class));
 
         step("Проверяем тело-ответа", () -> {
-            assertNull(response.getData());
-            assertNull(response.getSupport());
+            assertThat(response.getData()).isNull();
+            assertThat(response.getSupport()).isNull();
         });
     }
+
     @Test
     @Tag("positive_test")
     @Owner("Fazlyakhemtov D.A.")
     @Feature("GET запросы")
     @Story("Позитивные тесты")
     @DisplayName("Проверка неизвестного существующего пользователя с id=2 и его данными")
-    void checkUnknownSingleUserId2(){
+    void checkUnknownSingleUserId2() {
 
         UserResponseModel response = step("Отправляем GET запрос", () ->
                 given(userRequestSpecification)
@@ -89,19 +88,18 @@ public class StatusApiGetTests extends BaseTest {
                         .get("/unknown/2")
 
                         .then()
-                        .spec(userSuccessResponseSpecification)
+                        .spec(userSuccessResponseSpec200)
                         .extract().as(UserResponseModel.class));
 
-
         step("Проверяем тело-ответа", () -> {
-            assertEquals(dataUnknownSingleUser.getId(), response.getData().getId());
-            assertEquals(dataUnknownSingleUser.getName(), response.getData().getName());
-            assertEquals(dataUnknownSingleUser.getYear(), response.getData().getYear());
-            assertEquals(dataUnknownSingleUser.getColor(), response.getData().getColor());
-            assertEquals(dataUnknownSingleUser.getPantoneValue(), response.getData().getPantone_value());
+            assertThat(dataUnknownSingleUser.getId()).isEqualTo(response.getData().getId());
+            assertThat(dataUnknownSingleUser.getName()).isEqualTo(response.getData().getName());
+            assertThat(dataUnknownSingleUser.getYear()).isEqualTo(response.getData().getYear());
+            assertThat(dataUnknownSingleUser.getColor()).isEqualTo(response.getData().getColor());
+            assertThat(dataUnknownSingleUser.getPantoneValue()).isEqualTo(response.getData().getPantone_value());
 
-            assertEquals(dataUnknownSingleUser.getUrl(), response.getSupport().getUrl());
-            assertEquals(dataUnknownSingleUser.getText(), response.getSupport().getText());
+            assertThat(dataUnknownSingleUser.getUrl()).isEqualTo(response.getSupport().getUrl());
+            assertThat(dataUnknownSingleUser.getText()).isEqualTo(response.getSupport().getText());
         });
     }
 }

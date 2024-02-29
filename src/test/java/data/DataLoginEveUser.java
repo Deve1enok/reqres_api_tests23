@@ -1,4 +1,4 @@
-package utils;
+package data;
 
 import lombok.Data;
 
@@ -6,5 +6,4 @@ import lombok.Data;
 public class DataLoginEveUser {
     String email = "eve.holt@reqres.in";
     String password = "pistol";
-
 }
