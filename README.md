@@ -88,8 +88,7 @@ ____
 <img title="Allure Overview Dashboard" src="media/screenshots/allureReportMain.jpg">  
 </p>  
 
-Подробный отчёт одного из тест-кейсов
-На вкладке <code>Behaviors</code> можно рассмотреть каждый тест-кейс. Также можно подробно посмотреть тело запроса, ответа на отдельной html-странице.
+Подробный отчёт одного из тест-кейсов. На вкладке <code>Behaviors</code> можно рассмотреть каждый тест-кейс. Также можно подробно посмотреть тело запроса, ответа на отдельной html-странице.
 <p align="center">  
 <img title="Allure Overview Dashboard" src="media/screenshots/allureReportTK.jpg">  
 </p>
