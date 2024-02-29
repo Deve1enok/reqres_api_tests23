@@ -31,7 +31,7 @@ ____
 <a href="https://junit.org/junit5/"><img height= "40" width="40" title="JUni5" src="media/logo/JUnit5.svg"></a>
 <a href="https://www.jetbrains.com/ru-ru/idea/"><img height= "40" width="40" title="IDEA" src="media/logo/Idea.svg"></a>
   
-В проекте средой разработки выступает `IntelliJIDEA`. Сборщик библиотек и плагинов `Gradle`, к которому мы подключили `Java`, `JUnit5`, `Selenide`, `RestAssured`, `Allure`. Автотесты были написаны на языке `Java` с помощью библиотеки для тестирования api `RestAssured`. В качестве отчетности о выполнении тестов выступает `Allure`.
+В проекте средой разработки выступает `IntelliJIDEA`. Сборщик библиотек и плагинов `Gradle`, к которому мы подключили `Java`, `JUnit5`, `Selenide`, `RestAssured`, `Allure`. Автотесты были написаны на языке `Java`, с помощью библиотеки для тестирования api `RestAssured`. В качестве отчетности о выполнении тестов выступает `Allure`.
 Все тесты проходили на удаленном сервере `Selenoid`, а для удаленного запуска тестов использовался `Jenkins`,к которому мы подключили `AllureTestOps` для сбора статистики о тестах, `Jira` для создания тикетов, и бота с отчетом в `Telegram`. 
 
 </p>
