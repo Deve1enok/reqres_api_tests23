@@ -36,20 +36,20 @@ ____
 ____
 <a id="cases"></a>
 ## <a name="Примеры автоматизации Rest-Api">**Примеры автоматизации Rest-Api:**</a>
-***POST-запросы:***
--  *Успешная авторизация пользователя*
--  *Успешная регистрация пользователя*
--  *Регистрация без заполнения поля "job"*
--  *Регистрация без поля "password"*
--  *Авторизация без поля "password"*
+**POST-запросы:**
+-  Успешная авторизация пользователя
+-  Успешная регистрация пользователя
+-  Регистрация без заполнения поля "job"
+-  Регистрация без поля "password"
+-  Авторизация без поля "password"
   
-***GET-запросы:***
--  *Проверка на существующего пользователя с id=2 и его данными*
--  *Проверка неизвестного существующего пользователя с id=2 и его данными*
--  *Проверка на несуществующего пользователя*
+**GET-запросы:**
+-  Проверка на существующего пользователя с id=2 и его данными
+-  Проверка неизвестного существующего пользователя с id=2 и его данными
+-  Проверка на несуществующего пользователя
 
-***PUT-запросы:***
--  *Изменение имени и места работы пользователя*
+**PUT-запросы:**
+-  Изменение имени и места работы пользователя
 
 ____
 
@@ -66,7 +66,7 @@ gradle clean negative_tests
 ____
 <a id="jenkins"></a>
 ## <img alt="Jenkins" height="25" src="media/logo/jenkins-original.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/portfolio_reqres_api_test_23/)</a>
-### **Для запуска сборки необходимо перейти в раздел `Build with Parameters` выбрать нужные вам параметры и нажать кнопку `Build`.**
+Для запуска сборки необходимо перейти в раздел `Build with Parameters` выбрать нужные вам параметры и нажать кнопку `Build`.
 <p align="center">  
 <img title="Jenkins" src="media/screenshots/jenkinsBuild.jpg" alt="Jenkins"/>
 </p>
@@ -82,14 +82,14 @@ ____
 <a id="allure"></a>
 ## <img src="media/logo/Allure.svg" height= "25" width="25"  alt="Allure"/> Allure <a target="_blank" href="https://jenkins.autotests.cloud/job/portfolio_reqres_api_test_23/12/allure/">отчёт</a>
 
-## *Основная страница отчёта*
+Основная страница отчёта
 
 <p align="center">  
 <img title="Allure Overview Dashboard" src="media/screenshots/allureReportMain.jpg">  
 </p>  
 
 ## *Подробный отчёт одного из тест-кейсов*
-### **На вкладке <code>Behaviors</code> можно рассмотреть каждый тест-кейс. Также можно подробно посмотреть тело запроса, ответа на отдельной html-странице.**
+На вкладке <code>Behaviors</code> можно рассмотреть каждый тест-кейс. Также можно подробно посмотреть тело запроса, ответа на отдельной html-странице.
 <p align="center">  
 <img title="Allure Overview Dashboard" src="media/screenshots/allureReportTK.jpg">  
 </p>
@@ -99,7 +99,7 @@ ____
 
 <a id="allureTestOps"></a>
 ## <img alt="AllureTestOps" src="media/logo/Allure_TO.svg" height= "25" width="25" /><a name="Интеграция AllureTO"></a>Интеграция с [AllureTestOps](https://allure.autotests.cloud/project/4047/dashboards)</a>
-### **На `Dashboard` в `Allure TestOps` видна статистика тестирования: количество тест-кейсов, автоматизированных тестов, количество запусков тест-кейсов.**
+На `Dashboard` в `Allure TestOps` видна статистика тестирования: количество тест-кейсов, автоматизированных тестов, количество запусков тест-кейсов.
 <p align="center">  
 <img title="AllureTestOps Dashboard" src="media/screenshots/allureTestOpsDashBoard.jpg">
 </p>
@@ -122,7 +122,7 @@ ____
 
 <a id="jira"></a>
 ## <img alt="jiraTask" src="media/logo/Jira.svg" height= "25" width="25"/><a name="Интеграция Jira"></a>Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-1112)</a>
-### **Реализована интеграция `Allure TestOps` с `Jira`, в тикете отображается, какие тест-кейсы были написаны в рамках задачи и результат их прогона.**
+Реализована интеграция `Allure TestOps` с `Jira`, в тикете отображается, какие тест-кейсы были написаны в рамках задачи и результат их прогона.
 <p align="center">  
 <img title="Jira Tasks" src="media/screenshots/jiraTask.jpg">
 </p>
@@ -131,7 +131,7 @@ ____
 
 <a id="telegram"></a>
 ## <img title="Telegram" width="25" height="25" src="media/logo/Telegram.svg"> Уведомления в Telegram с использованием бота.
-### **После завершения сборки <code>Telegram</code> бот, автоматически обрабатывает информацию и отправляет сообщение с отчетом о прогоне тестов.**
+После завершения сборки <code>Telegram</code> бот, автоматически обрабатывает информацию и отправляет сообщение с отчетом о прогоне тестов.
 
 <p align="center">
 <img title="Telegram Notifications" src="media/screenshots/telegramBotInfo.jpg">
