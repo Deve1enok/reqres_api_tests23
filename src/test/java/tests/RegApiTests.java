@@ -41,13 +41,13 @@ public class RegApiTests extends BaseTest {
         createData.setJob(dataCreateUser.getJob());
 
         CreateUserResponseModel response = step("Отправляем POST запрос", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(createData)
                         .when()
                         .post("/users")
 
                         .then()
-                        .spec(createResponseSpec201)
+                        .spec(responseSpec201)
                         .extract().as(CreateUserResponseModel.class));
 
         step("Проверяем тело-ответа", () -> {
@@ -71,13 +71,13 @@ public class RegApiTests extends BaseTest {
         createData.setName(dataCreateUser.getName());
 
         CreateUserResponseModel response = step("Отправляем POST запрос", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(createData)
                         .when()
                         .post("/users")
 
                         .then()
-                        .spec(createResponseSpec201)
+                        .spec(responseSpec201)
                         .extract().as(CreateUserResponseModel.class));
 
         step("Проверяем тело-ответа", () -> {
@@ -102,13 +102,13 @@ public class RegApiTests extends BaseTest {
         createData.setJob(dataUpdateUser.getJob());
 
         CreateUserResponseModel response = step("Отправляем PUT запрос", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(createData)
                         .when()
                         .put("/users/2")
 
                         .then()
-                        .spec(userSuccessResponseSpec200)
+                        .spec(successResponseSpec200)
                         .extract().as(CreateUserResponseModel.class));
 
         step("Проверяем тело-ответа", () -> {
@@ -130,7 +130,7 @@ public class RegApiTests extends BaseTest {
         loginData.setEmail(dataUserPeter.getEmail());
 
         RegistrationAndLoginResponseModel response = step("Отправляем POST запрос", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(loginData)
                         .when()
                         .post("/register")
@@ -156,13 +156,13 @@ public class RegApiTests extends BaseTest {
         loginData.setPassword(dataUserEve.getPassword());
 
         CreateUserResponseModel response = step("Отправляем POST запрос", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(loginData)
                         .when()
                         .post("/login")
 
                         .then()
-                        .spec(createLoginResponseSpec200)
+                        .spec(successResponseSpec200)
                         .extract().as(CreateUserResponseModel.class));
 
         step("Проверяем тело-ответа", () -> {
@@ -182,7 +182,7 @@ public class RegApiTests extends BaseTest {
         loginData.setEmail(dataUserPeter.getEmail());
 
         RegistrationAndLoginResponseModel response = step("Отправляем POST запрос", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(loginData)
                         .when()
                         .post("/login")

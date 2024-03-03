@@ -31,13 +31,13 @@ public class StatusApiGetTests extends BaseTest {
     void checkSingleUserId2() {
 
         UserResponseModel response = step("Отправляем GET запрос", () ->
-                given(userRequestSpecification)
+                given(requestSpecification)
 
                         .when()
                         .get("/users/2")
 
                         .then()
-                        .spec(userSuccessResponseSpec200)
+                        .spec(successResponseSpec200)
                         .extract().as(UserResponseModel.class));
 
         step("Проверяем тело-ответа", () -> {
@@ -58,7 +58,7 @@ public class StatusApiGetTests extends BaseTest {
     void checkSingleUserNotFound() {
 
         UserResponseModel response = step("Отправляем GET запрос", () ->
-                given(userRequestSpecification)
+                given(requestSpecification)
 
                         .when()
                         .get("/users/23")
@@ -82,13 +82,13 @@ public class StatusApiGetTests extends BaseTest {
     void checkUnknownSingleUserId2() {
 
         UserResponseModel response = step("Отправляем GET запрос", () ->
-                given(userRequestSpecification)
+                given(requestSpecification)
 
                         .when()
                         .get("/unknown/2")
 
                         .then()
-                        .spec(userSuccessResponseSpec200)
+                        .spec(successResponseSpec200)
                         .extract().as(UserResponseModel.class));
 
         step("Проверяем тело-ответа", () -> {
